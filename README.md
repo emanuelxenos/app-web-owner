@@ -1,17 +1,33 @@
-# unifytechxenosadmin
+# ERP UnifyTech Xenos - Painel Web (Owner/Admin)
 
-A new Flutter project.
+Aplicativo frontend construído para ser o **Centro de Comando** tanto dos Donos de Lojas (Clientes) quanto dos SuperAdministradores (Equipe UnifyTech). 
 
-## Getting Started
+## 📱 Principais Funcionalidades
 
-This project is a starting point for a Flutter application.
+- **Painel do Dono (Owner Dashboard):** Interface rica e focada em BI (Business Intelligence) onde os proprietários visualizam o faturamento, vendas diárias e resumo financeiro de suas lojas em tempo real, consultando diretamente o banco local da loja através do Túnel WebSocket.
+- **Painel do Administrador (SuperAdmin):** Ambiente restrito para a gestão de licenças, cadastro de clientes (donos), registro de lojas físicas pelo CNPJ e vinculação de lojas aos donos. 
+- **Experiência Visual Moderna:** Sistema de abas, pesquisas em tempo real (com `debounce`), paginação nativa e uso de componentes responsivos baseados no Material Design.
+- **Navegação Segura:** Rotas protegidas (GoRouter) e controle de estado reativo utilizando Riverpod.
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠 Tecnologias Utilizadas
+- **Framework:** Flutter (Web)
+- **Linguagem:** Dart
+- **Gerência de Estado:** Riverpod
+- **Roteamento:** GoRouter
+- **Estilização:** Tema Customizado (Cores Escuras, Componentes Vidro/Translúcidos, Micro-animações)
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 📦 Como Rodar Localmente
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Certifique-se de ter o [Flutter SDK](https://flutter.dev/docs/get-started/install) instalado.
+2. Clone o repositório.
+3. Baixe as dependências do projeto:
+   ```bash
+   flutter pub get
+   ```
+4. Rode a aplicação em um navegador web (ex: Chrome):
+   ```bash
+   flutter run -d chrome
+   ```
+
+## 🏗 Arquitetura Frontend
+O app é desenhado com uma estrutura baseada em Features (Apresentação, Serviços, Core). Toda a comunicação HTTP passa por um `ApiService` (utilizando o pacote `dio`) que embute os tokens JWT nas requisições, abstraindo a complexidade de rotas paginadas e a proteção de rotas restritas.
