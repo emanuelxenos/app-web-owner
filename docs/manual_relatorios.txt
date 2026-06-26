@@ -1,0 +1,333 @@
+================================================================================
+         UNIFYTECH XENOS ERP - GUIA COMPLETO E MANUAL DE RELATÓRIOS
+================================================================================
+Versão: 1.0.0
+Data: 18 de Maio de 2026
+Público-Alvo: Operadores, Supervisores, Gestores Financeiros e Administradores
+
+Este documento serve como a documentação oficial do módulo de Relatórios e
+Inteligência Comercial do UnifyTech Xenos. Ele descreve a finalidade, a utilidade
+prática, os indicadores exibidos e a interpretação estratégica de todos os 24
+relatórios integrados na plataforma. Esta base de conhecimento foi projetada para
+ser incorporada diretamente na seção de "Ajuda" do software.
+
+================================================================================
+ÍNDICE DE CATEGORIAS
+================================================================================
+1. RELATÓRIOS OPERACIONAIS (Foco no dia a dia do caixa e vendas)
+2. RELATÓRIOS DE ESTOQUE (Foco em inventário, giro e saúde dos produtos)
+3. RELATÓRIOS FINANCEIROS (Foco em contas, fluxo de caixa e meios de pagamento)
+4. RELATÓRIOS ESTRATÉGICOS (Foco em DRE, rentabilidade, auditoria e metas)
+5. RELATÓRIOS DE CRM (Foco no comportamento, compras e fidelização de clientes)
+6. RELATÓRIOS DE AUDITORIA (Foco em segurança e integridade das operações)
+
+================================================================================
+1. RELATÓRIOS OPERACIONAIS
+================================================================================
+
+--------------------------------------------------------------------------------
+[1.1] VENDAS HOJE
+--------------------------------------------------------------------------------
+* Finalidade: Acompanhamento em tempo real do desempenho do caixa no dia atual.
+* Utilidade Prática: Permite ao supervisor verificar se a meta diária de vendas
+  está próxima, monitorar a quantidade de vendas abertas/fechadas e identificar
+  o faturamento bruto acumulado até o minuto atual.
+* Indicadores Exibidos:
+  - Faturamento Bruto do Dia (R$).
+  - Quantidade de Vendas Realizadas.
+  - Ticket Médio do Dia (valor médio gasto por cliente).
+  - Listagem cronológica de cada venda (horário, operador, cliente e valor).
+
+--------------------------------------------------------------------------------
+[1.2] VENDAS DO MÊS
+--------------------------------------------------------------------------------
+* Finalidade: Analisar o faturamento bruto e volume comercial do mês corrente.
+* Utilidade Prática: Essencial para comparar o desempenho do mês atual com os
+  meses anteriores, auxiliando na projeção de metas e fluxo de caixa de curto prazo.
+* Indicadores Exibidos:
+  - Faturamento Mensal Acumulado.
+  - Média Diária de Faturamento.
+  - Crescimento percentual em relação ao mesmo período do mês passado.
+  - Gráfico de barras indicando a flutuação diária das vendas.
+
+--------------------------------------------------------------------------------
+[1.3] MAIS VENDIDOS (RANKING DE PRODUTOS)
+--------------------------------------------------------------------------------
+* Finalidade: Identificar quais itens possuem maior giro de saída (Curva de Giro).
+* Utilidade Prática: Ajuda o departamento de compras a planejar a reposição,
+  garantindo que os produtos mais procurados nunca fiquem em falta (ruptura),
+  além de orientar campanhas promocionais de produtos complementares.
+* Indicadores Exibidos:
+  - Ranking dos produtos mais vendidos por quantidade física.
+  - Receita total gerada por cada item no período.
+  - Filtro por categoria para análises de nicho.
+
+--------------------------------------------------------------------------------
+[1.4] VENDAS POR CATEGORIA
+--------------------------------------------------------------------------------
+* Finalidade: Demonstrar a participação percentual de cada categoria no faturamento.
+* Utilidade Prática: Permite aos gestores identificar quais departamentos do
+  mercado (ex: Hortifrúti, Padaria, Açougue, Mercearia, Bebidas) são os pilares
+  do faturamento e quais precisam de melhor posicionamento de gôndola ou ofertas.
+* Indicadores Exibidos:
+  - Participação percentual de cada categoria (Gráfico de Pizza/Donut).
+  - Valor total faturado por categoria.
+  - Quantidade de itens vendidos em cada grupo.
+
+================================================================================
+2. RELATÓRIOS DE ESTOQUE
+================================================================================
+
+--------------------------------------------------------------------------------
+[2.1] VISÃO DE ESTOQUE (RESUMO DO ACERVO)
+--------------------------------------------------------------------------------
+* Finalidade: Diagnóstico rápido do patrimônio físico estocado na empresa.
+* Utilidade Prática: Permite avaliar a saúde financeira imobilizada no estoque,
+  identificar produtos parados e estimar o valor potencial de venda de todo o pátio.
+* Indicadores Exibidos:
+  - Custo total do estoque ativo (investimento em mercadoria).
+  - Valor potencial de venda (faturamento estimado).
+  - Margem média geral do estoque.
+  - Quantidade total de itens cadastrados e ativos.
+
+--------------------------------------------------------------------------------
+[2.2] CURVA ABC (SAÚDE COMERCIAL DO ESTOQUE)
+--------------------------------------------------------------------------------
+* Finalidade: Classificar os produtos em grupos A, B e C com base no impacto financeiro.
+* Utilidade Prática:
+  - Classe A: Representa ~80% do faturamento (Foco total em segurança e reposição).
+  - Classe B: Representa ~15% do faturamento (Monitoramento regular).
+  - Classe C: Representa ~5% do faturamento (Reduzir estoque para evitar perdas).
+* Indicadores Exibidos:
+  - Classificação individual de cada produto.
+  - Porcentagem acumulada de contribuição de faturamento.
+  - Sugestão de controle de estoque baseada na curva de Pareto.
+
+--------------------------------------------------------------------------------
+[2.3] GIRO DE ESTOQUE (VELOCIDADE DE SAÍDA)
+--------------------------------------------------------------------------------
+* Finalidade: Medir a frequência com que o estoque é totalmente renovado.
+* Utilidade Prática: Indica a eficiência de giro das mercadorias. Um giro baixo
+  alerta para capital preso em estoque; um giro alto reflete excelente liquidez.
+* Indicadores Exibidos:
+  - Taxa de giro por categoria/produto.
+  - Tempo médio de permanência do item na prateleira antes de ser vendido.
+  - Alerta de "Estoque Ocioso" para itens com giro próximo de zero.
+
+--------------------------------------------------------------------------------
+[2.4] RUPTURA DE ESTOQUE (FALTA DE MERCADORIA)
+--------------------------------------------------------------------------------
+* Finalidade: Mapear itens que estão ativos no catálogo, mas sem saldo físico.
+* Utilidade Prática: Alerta crítico para compras imediatas. Evita a perda de vendas
+  devido à ausência de produtos básicos que o cliente espera encontrar.
+* Indicadores Exibidos:
+  - Lista de produtos ativos com saldo zero ou negativo.
+  - Último preço de compra registrado do fornecedor.
+  - Média histórica de vendas do item para estimar o prejuízo diário de não tê-lo.
+
+================================================================================
+3. RELATÓRIOS FINANCEIROS
+================================================================================
+
+--------------------------------------------------------------------------------
+[3.1] RESUMO FINANCEIRO (DASHBOARD FINANCEIRO)
+--------------------------------------------------------------------------------
+* Finalidade: Visão rápida da saúde de caixa em um único dashboard de controle.
+* Utilidade Prática: Utilizado diariamente pelo gerente financeiro para conferir
+  o saldo atual das contas bancárias, conciliações de cartões e valores a receber.
+* Indicadores Exibidos:
+  - Saldo disponível total (Caixa + Bancos).
+  - Contas a pagar para os próximos 7 dias.
+  - Contas a receber para os próximos 7 dias.
+  - Saldo líquido projetado de curto prazo.
+
+--------------------------------------------------------------------------------
+[3.2] CONTAS A PAGAR DETALHADO
+--------------------------------------------------------------------------------
+* Finalidade: Relação minuciosa de todas as obrigações financeiras com fornecedores.
+* Utilidade Prática: Evita multas, juros e cortes de fornecimento ao organizar
+  os pagamentos por data de vencimento. Permite programar saídas de caixa saudáveis.
+* Indicadores Exibidos:
+  - Listagem de contas com status (Pendente, Pago, Atrasado).
+  - Vencimento, Fornecedor, Valor original e Valor com juros.
+  - Somatório de contas pendentes agrupado por mês/semana.
+
+--------------------------------------------------------------------------------
+[3.3] INADIMPLÊNCIA (CONTAS A RECEBER EM ATRASO)
+--------------------------------------------------------------------------------
+* Finalidade: Identificar duplicatas e crediários de clientes vencidos e não pagos.
+* Utilidade Prática: Essencial para a equipe de cobrança e análise de crédito.
+  Ajuda a restringir a venda a prazo para clientes com alto índice de atrasos.
+* Indicadores Exibidos:
+  - Ranking de clientes inadimplentes.
+  - Tempo médio de atraso (Aging List).
+  - Valor total em aberto e número de parcelas vencidas.
+
+--------------------------------------------------------------------------------
+[3.4] PROJEÇÃO DE CAIXA (FLUXO DE CAIXA PREVISTO)
+--------------------------------------------------------------------------------
+* Finalidade: Prever a saúde financeira da empresa nas próximas semanas/meses.
+* Utilidade Prática: Combina contas a pagar e contas a receber futuras para prever
+  se haverá dinheiro suficiente em caixa nas datas críticas de folha de pagamento.
+* Indicadores Exibidos:
+  - Gráfico de linha temporal com entradas vs. saídas programadas.
+  - Saldo de caixa projetado no final de cada dia/mês.
+  - Indicador visual de alerta de "Caixa Negativo" futuro.
+
+--------------------------------------------------------------------------------
+[3.5] MEIOS DE PAGAMENTO
+--------------------------------------------------------------------------------
+* Finalidade: Segmentar e demonstrar como o faturamento é recebido (PIX, Cartão, etc.).
+* Utilidade Prática: Ajuda a entender a preferência do consumidor e a estimar os
+  custos de taxas de operadoras. É vital para conferir o fluxo de recebimentos.
+* Indicadores Exibidos:
+  - Gráfico de pizza interativo mostrando a fatia de participação de cada método.
+  - Volume de transações por modalidade.
+  - Faturamento consolidado no período selecionado por meio de pagamento.
+
+================================================================================
+4. RELATÓRIOS ESTRATÉGICOS (MÓDULO DE GESTÃO EXECUTIVA)
+================================================================================
+
+--------------------------------------------------------------------------------
+[4.1] DRE GERENCIAL (DEMONSTRATIVO DE RESULTADOS DO EXERCÍCIO)
+--------------------------------------------------------------------------------
+* Finalidade: Demonstrar se a empresa está gerando Lucro ou Prejuízo contábil.
+* Utilidade Prática: A ferramenta definitiva de tomada de decisão do dono do
+  estabelecimento. Consolida a receita bruta, desconta impostos, custos de
+  mercadoria vendida (CMV), despesas operacionais e fixas para chegar ao lucro líquido.
+* Indicadores Exibidos:
+  - Receita Bruta de Vendas.
+  - Deduções e Custos de Mercadorias (CMV).
+  - Margem de Contribuição.
+  - Despesas Fixas e Variáveis.
+  - Lucro Líquido Operacional e EBITDA.
+
+--------------------------------------------------------------------------------
+[4.2] COMISSÕES
+--------------------------------------------------------------------------------
+* Finalidade: Calcular os valores devidos aos colaboradores por desempenho de venda.
+* Utilidade Prática: Simplifica a rotina de recursos humanos, garantindo que
+  o cálculo de prêmios e comissões dos operadores de caixa seja exato e transparente.
+* Indicadores Exibidos:
+  - Lista de colaboradores e suas respectivas vendas realizadas no mês.
+  - Margem/Meta atingida individualmente.
+  - Valor da comissão apurada (calculado por percentual fixo ou faixa de vendas).
+
+--------------------------------------------------------------------------------
+[4.3] PRODUTOS POR MARGEM (RENTABILIDADE POR ITEM)
+--------------------------------------------------------------------------------
+* Finalidade: Avaliar quais mercadorias geram maior margem de lucro real.
+* Utilidade Prática: Evita a armadilha de vender muito um produto que dá pouco lucro.
+  Permite ajustar a precificação correta de mercadorias para maximizar o ganho.
+* Indicadores Exibidos:
+  - Preço de Custo vs. Preço de Venda de cada produto.
+  - Margem Bruta Individual (R$).
+  - Margem Percentual (Markup / Margem de Contribuição %).
+  - Classificação de maior a menor rentabilidade.
+
+--------------------------------------------------------------------------------
+[4.4] FLUXO POR HORÁRIO (PICOS DE TRÁFEGO)
+--------------------------------------------------------------------------------
+* Finalidade: Mapear os horários de maior fluxo de vendas ao longo das 24 horas.
+* Utilidade Prática: Excelente para decisões de escalas de trabalho e abertura.
+  Permite colocar mais operadores nos horários de pico (evitando filas) e programar
+  recebimento de mercadorias/limpeza para os horários de menor tráfego.
+* Indicadores Exibidos:
+  - Gráfico de linhas contínuo demonstrando o pico de vendas por hora.
+  - Faturamento acumulado por faixa horária.
+  - Contagem de cupons emitidos a cada hora.
+
+--------------------------------------------------------------------------------
+[4.5] COMPRAS VS. VENDAS (BALANÇO FINANCEIRO DIÁRIO)
+--------------------------------------------------------------------------------
+* Finalidade: Cruzar o dinheiro gasto com compras de estoque vs. faturamento diário.
+* Utilidade Prática: Ajuda a manter a balança comercial positiva. Alerta se a
+  empresa está comprando dos fornecedores mais do que é capaz de vender, evitando
+  o estrangulamento do fluxo de caixa operacional.
+* Indicadores Exibidos:
+  - Comparativo de saídas de compras (entrada de nota fiscal) vs. entradas de vendas.
+  - Saldo líquido comercial diário (Faturamento - Custo de Entrada).
+  - KPIs consolidados e tabela de balanço dia a dia.
+
+================================================================================
+5. RELATÓRIOS DE CRM (RELACIONAMENTO COM O CLIENTE)
+================================================================================
+
+--------------------------------------------------------------------------------
+[5.1] RANKING DE CLIENTES (MELHORES COMPRADORES)
+--------------------------------------------------------------------------------
+* Finalidade: Identificar os clientes que mais gastam no estabelecimento (VIPs).
+* Utilidade Prática: Permite a criação de programas de fidelidade, convites para
+  eventos exclusivos, ofertas sob medida e atendimento personalizado para reter
+  os consumidores mais valiosos para o negócio.
+* Indicadores Exibidos:
+  - Lista de clientes ordenados por volume de compras acumulado (R$).
+  - Frequência de visitas ao mercado.
+  - Ticket médio individual do cliente.
+
+--------------------------------------------------------------------------------
+[5.2] CLIENTES INATIVADOS
+--------------------------------------------------------------------------------
+* Finalidade: Relação de cadastros de clientes que foram suspensos ou inativados.
+* Utilidade Prática: Controle administrativo. Ajuda a monitorar cadastros
+  bloqueados por restrição interna, duplicidades ou fraudes financeiras.
+* Indicadores Exibidos:
+  - Lista de clientes inativos no sistema.
+  - Motivo de bloqueio ou data de inativação.
+  - Usuário administrador responsável pelo bloqueio.
+
+--------------------------------------------------------------------------------
+[5.3] CLIENTES AUSENTES (CHURN RATE)
+--------------------------------------------------------------------------------
+* Finalidade: Identificar clientes cadastrados que pararam de comprar no mercado.
+* Utilidade Prática: Recuperação ativa de vendas! Alerta quando um cliente antigo
+  (ex: que comprava toda semana) não aparece há mais de 30 ou 60 dias. Permite
+  o envio de cupons de reativação pelo WhatsApp.
+* Indicadores Exibidos:
+  - Lista de clientes com ausência prolongada.
+  - Dias decorridos desde a última compra registrada.
+  - Histórico de preferência de categorias do cliente para ofertas focadas.
+
+================================================================================
+6. RELATÓRIOS DE AUDITORIA E SEGURANÇA
+================================================================================
+
+--------------------------------------------------------------------------------
+[6.1] AUDITORIA GERAL (LOGS DE SISTEMA)
+--------------------------------------------------------------------------------
+* Finalidade: Registrar todos os acessos e manipulações de dados sensíveis no ERP.
+* Utilidade Prática: Ferramenta vital de governança corporativa e segurança.
+  Permite rastrear quem editou o preço de um produto, quem alterou permissões de
+  usuário ou quem acessou rotinas restritas da empresa.
+* Indicadores Exibidos:
+  - Data, Hora e IP do acesso.
+  - Colaborador responsável pelo evento.
+  - Ação realizada (ex: Alteração de Preço, Exclusão de Venda, Login).
+
+--------------------------------------------------------------------------------
+[6.2] CANCELAMENTOS (AUDITORIA DE FRENTE DE CAIXA)
+--------------------------------------------------------------------------------
+* Finalidade: Monitorar itens ou cupons inteiros cancelados nos caixas (PDV).
+* Utilidade Prática: Prevenção de perdas e fraudes na frente de caixa. Evita a
+  prática ilícita de cancelar itens da compra após receber o dinheiro do cliente.
+* Indicadores Exibidos:
+  - Relação de cancelamentos efetuados no PDV.
+  - Operador de caixa e supervisor que autorizou o cancelamento.
+  - Motivo do cancelamento (ex: Erro de digitação, Cliente desistiu).
+
+--------------------------------------------------------------------------------
+[6.3] RANKING DE OPERADORES
+--------------------------------------------------------------------------------
+* Finalidade: Avaliar o desempenho individual de eficiência de cada operador.
+* Utilidade Prática: Útil para identificar quais operadores registram mais vendas,
+  quais são mais ágeis no processamento do cupom fiscal e quais operam com menor
+  taxa de erros de caixa e cancelamentos.
+* Indicadores Exibidos:
+  - Volume de vendas registrado por operador de caixa (R$).
+  - Velocidade média de processamento de itens.
+  - Taxa de cancelamentos vinculada a cada operador.
+
+================================================================================
+                     FIM DO MANUAL DE RELATÓRIOS E INTELIGÊNCIA
+================================================================================

@@ -1,0 +1,25 @@
+A tela de Compras no sistema UnifyTech Xenos tem uma finalidade estratégica e logística dentro da gestão do seu negócio. Enquanto a tela de Vendas cuida da saída de mercadorias, a tela de Compras cuida da entrada e do abastecimento.
+
+Aqui está uma explicação detalhada da sua finalidade:
+
+1. Alimentação Automatizada de Estoque
+A principal função técnica desta tela é o recebimento de mercadorias. Em vez de você ajustar o estoque manualmente (como fizemos na tela de Estoque para correções pontuais), você registra uma nota de compra aqui.
+
+Finalidade: Ao finalizar o registro de uma compra, o sistema soma automaticamente as quantidades compradas ao estoque atual de cada produto.
+2. Gestão de Fornecedores
+É neste módulo que você gerencia quem fornece os produtos para sua empresa.
+
+Finalidade: Ter um histórico de qual fornecedor oferece o melhor preço de custo (precoCusto), ajudando na tomada de decisão em futuras compras.
+3. Controle de Contas a Pagar (Integração Financeira)
+Toda compra gera um compromisso financeiro.
+
+Finalidade: Ao registrar uma compra, o sistema integra-se automaticamente ao módulo Financeiro, criando um lançamento em Contas a Pagar. Isso evita que você perca o prazo de pagamento de boletos de fornecedores.
+4. Atualização de Preços de Custo e Margem
+O sistema permite acompanhar as flutuações de preços.
+
+Finalidade: Se um fornecedor aumentou o preço de um item, você registra isso na compra e o sistema já sugere ou atualiza o seu preço de custo, permitindo que você reavalie sua margem de lucro e o preço de venda final.
+5. Histórico e Relatórios
+Finalidade: Saber quanto você investiu em mercadorias em determinado mês, quais produtos estão saindo mais rápido e precisam de reposição, e manter um rastro legal de todas as entradas do mercado.
+Resumo: Ela é o "cinto de segurança" do seu estoque e a base para o seu controle financeiro de saída. Sem ela, o estoque ficaria desatualizado e você não teria clareza sobre suas dívidas com fornecedores.
+
+Nota: Como vimos no código, esta tela está atualmente em fase de finalização de interface, servindo hoje como o ponto central para registrar essas entradas assim que a mercadoria chega no caminhão do fornecedor.
