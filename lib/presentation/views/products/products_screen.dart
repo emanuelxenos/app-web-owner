@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:unifytechxenoswebowner/services/file_export_service.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unifytechxenoswebowner/core/theme/app_theme.dart';
@@ -130,30 +132,27 @@ class _ProductsScreenState extends ConsumerState<ProductsScreen> {
     final productsState = ref.read(productsProvider);
     
     try {
+      final params = {
+        'search': productsState.search,
+        'categoria_id': productsState.categoriaId,
+        'baixo_estoque': productsState.onlyLowStock,
+      };
+
+      final bytes = await ref.read(reportRepositoryProvider).exportarRelatorioBytes(
+        formato, 
+        'estoque_lista',
+        params: params,
+      );
+
       String fileName = 'produtos_${DateTime.now().millisecondsSinceEpoch}.$formato';
-      String? outputFile = await FilePicker.saveFile(
+      String? outputFile = await FileExportService.exportAndSave(
+        bytes: bytes,
         dialogTitle: 'Exportar Produtos',
         fileName: fileName,
-        type: FileType.custom,
-        allowedExtensions: [formato],
+        extension: formato,
       );
 
       if (outputFile != null) {
-        if (!outputFile.endsWith('.$formato')) outputFile += '.$formato';
-        
-        final params = {
-          'search': productsState.search,
-          'categoria_id': productsState.categoriaId,
-          'baixo_estoque': productsState.onlyLowStock,
-        };
-
-        await ref.read(reportRepositoryProvider).exportarRelatorio(
-          formato, 
-          outputFile, 
-          'estoque_lista',
-          params: params,
-        );
-
         _showFeedback('Catálogo exportado: $outputFile', true);
       }
     } catch (e) {

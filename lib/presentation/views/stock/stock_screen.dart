@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:unifytechxenoswebowner/services/file_export_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unifytechxenoswebowner/core/theme/app_theme.dart';
 import 'package:unifytechxenoswebowner/core/utils/formatters.dart';
@@ -103,39 +105,34 @@ class _StockScreenState extends ConsumerState<StockScreen> {
     final productsState = ref.read(productsProvider);
     
     try {
-      String fileName = 'estoque_${DateTime.now().millisecondsSinceEpoch}.$formato';
-      String? outputFile = await FilePicker.saveFile(
-        dialogTitle: 'Exportar Estoque',
-        fileName: fileName,
-        type: FileType.custom,
-        allowedExtensions: [formato],
+      final params = {
+        'search': productsState.search,
+        'categoria_id': productsState.categoriaId,
+        'baixo_estoque': productsState.onlyLowStock,
+        'vencendo': productsState.onlyExpiring,
+      };
+
+      final bytes = await ref.read(reportRepositoryProvider).exportarRelatorioBytes(
+        formato, 
+        'estoque_lista',
+        params: params,
       );
 
-      if (outputFile != null) {
-        if (!outputFile.endsWith('.$formato')) outputFile += '.$formato';
-        
-        final params = {
-          'search': productsState.search,
-          'categoria_id': productsState.categoriaId,
-          'baixo_estoque': productsState.onlyLowStock,
-          'vencendo': productsState.onlyExpiring,
-        };
+      String fileName = 'estoque_${DateTime.now().millisecondsSinceEpoch}.$formato';
+      String? outputFile = await FileExportService.exportAndSave(
+        bytes: bytes,
+        dialogTitle: 'Exportar Estoque',
+        fileName: fileName,
+        extension: formato,
+      );
 
-        await ref.read(reportRepositoryProvider).exportarRelatorio(
-          formato, 
-          outputFile, 
-          'estoque_lista',
-          params: params,
+      if (outputFile != null && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Estoque exportado: $outputFile'),
+            backgroundColor: Colors.green,
+          ),
         );
-
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Estoque exportado: $outputFile'),
-              backgroundColor: Colors.green,
-            ),
-          );
-        }
       }
     } catch (e) {
       if (mounted) {
@@ -153,21 +150,19 @@ class _StockScreenState extends ConsumerState<StockScreen> {
 
   Future<void> _imprimirEtiqueta(int produtoId) async {
     try {
-      String? outputFile = await FilePicker.saveFile(
+      final bytes = await ref.read(reportRepositoryProvider).imprimirEtiquetaBytes(produtoId);
+      
+      String? outputFile = await FileExportService.exportAndSave(
+        bytes: bytes,
         dialogTitle: 'Salvar Etiqueta',
         fileName: 'etiqueta_$produtoId.pdf',
-        type: FileType.custom,
-        allowedExtensions: ['pdf'],
+        extension: 'pdf',
       );
 
-      if (outputFile != null) {
-        if (!outputFile.endsWith('.pdf')) outputFile += '.pdf';
-        await ref.read(reportRepositoryProvider).imprimirEtiqueta(produtoId, outputFile);
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Etiqueta gerada com sucesso!'), backgroundColor: Colors.green),
-          );
-        }
+      if (outputFile != null && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Etiqueta gerada com sucesso!'), backgroundColor: Colors.green),
+        );
       }
     } catch (e) {
       if (mounted) {

@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -132,6 +133,18 @@ class ApiService {
       onReceiveProgress: onReceiveProgress,
       queryParameters: queryParameters,
     );
+  }
+
+  Future<Uint8List> downloadBytes(
+    String path, {
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    final response = await _dio.get(
+      _buildPath(path),
+      queryParameters: queryParameters,
+      options: Options(responseType: ResponseType.bytes),
+    );
+    return response.data;
   }
 
   /// Test connection to the server

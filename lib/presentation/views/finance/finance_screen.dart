@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:unifytechxenoswebowner/services/file_export_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:unifytechxenoswebowner/core/theme/app_theme.dart';
@@ -312,14 +314,7 @@ class _FinanceScreenState extends ConsumerState<FinanceScreen>
 
   Future<void> _export(BuildContext context, WidgetRef ref, String ext) async {
     final filters = ref.read(financialFiltersProvider);
-    final path = await FilePicker.saveFile(
-      dialogTitle: 'Salvar Extrato Financeiro',
-      fileName: 'extrato_financeiro.$ext',
-      allowedExtensions: [ext],
-      type: FileType.custom,
-    );
-    if (path == null) return;
-
+    
     setState(() => _isExporting = true);
     final queryParams = {
       if (filters.start != null)
@@ -328,9 +323,15 @@ class _FinanceScreenState extends ConsumerState<FinanceScreen>
         'data_fim': filters.end!.toString().split(' ')[0],
     };
     try {
-      await ref
-          .read(reportRepositoryProvider)
-          .exportarRelatorio(ext, path, 'financeiro', params: queryParams);
+      final bytes = await ref.read(reportRepositoryProvider).exportarRelatorioBytes(ext, 'financeiro', params: queryParams);
+      
+      final path = await FileExportService.exportAndSave(
+        bytes: bytes,
+        dialogTitle: 'Salvar Extrato Financeiro',
+        fileName: 'extrato_financeiro.$ext',
+        extension: ext,
+      );
+      if (path == null) return;
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(

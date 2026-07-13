@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'dart:typed_data';
 import 'package:unifytechxenoswebowner/core/constants/api_endpoints.dart';
 import 'package:unifytechxenoswebowner/services/api_service.dart';
 import 'package:unifytechxenoswebowner/domain/models/report.dart';
@@ -165,10 +166,33 @@ class ReportRepository {
     await _api.download(endpoint, savePath, queryParameters: queryParams);
   }
 
+  Future<Uint8List> exportarRelatorioBytes(String formato, String tipo, {Map<String, dynamic>? params}) async {
+    String endpoint = ApiEndpoints.relatorioExportExcel;
+    if (formato == 'pdf') {
+      endpoint = ApiEndpoints.relatorioExportPdf;
+    } else if (formato == 'txt') {
+      endpoint = ApiEndpoints.relatorioExportBalanca;
+    }
+    
+    final Map<String, dynamic> queryParams = {'tipo': tipo};
+    if (params != null) {
+      queryParams.addAll(params);
+    }
+    
+    return await _api.downloadBytes(endpoint, queryParameters: queryParams);
+  }
+
   Future<void> imprimirEtiqueta(int produtoId, String savePath) async {
     await _api.download(
       ApiEndpoints.relatorioEtiqueta, 
       savePath, 
+      queryParameters: {'id': produtoId},
+    );
+  }
+
+  Future<Uint8List> imprimirEtiquetaBytes(int produtoId) async {
+    return await _api.downloadBytes(
+      ApiEndpoints.relatorioEtiqueta, 
       queryParameters: {'id': produtoId},
     );
   }

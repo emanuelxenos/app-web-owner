@@ -8,6 +8,7 @@ import 'package:unifytechxenoswebowner/core/theme/app_theme.dart';
 import 'package:unifytechxenoswebowner/core/utils/formatters.dart';
 import 'package:unifytechxenoswebowner/data/repositories/report_repository.dart';
 import 'package:unifytechxenoswebowner/presentation/providers/report_provider.dart';
+import 'package:unifytechxenoswebowner/services/file_export_service.dart';
 import 'package:unifytechxenoswebowner/presentation/widgets/shared_widgets.dart';
 import 'package:unifytechxenoswebowner/presentation/providers/category_provider.dart';
 import 'package:unifytechxenoswebowner/presentation/views/reports/widgets/reports_help_dialog.dart';
@@ -58,16 +59,16 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
   Future<void> _exportar(String formato) async {
     setState(() => _isExporting = true);
     try {
-      String? outputFile = await FilePicker.saveFile(
+      final bytes = await ref.read(reportRepositoryProvider).exportarRelatorioBytes(formato, _getTipoRelatorioAtivo());
+      
+      String? outputFile = await FileExportService.exportAndSave(
+        bytes: bytes,
         dialogTitle: 'Salvar Relatório',
         fileName: 'relatorio_${_getTipoRelatorioAtivo()}.$formato',
-        type: FileType.custom,
-        allowedExtensions: [formato],
+        extension: formato,
       );
 
       if (outputFile != null) {
-        if (!outputFile.endsWith('.$formato')) outputFile += '.$formato';
-        await ref.read(reportRepositoryProvider).exportarRelatorio(formato, outputFile, _getTipoRelatorioAtivo());
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Relatório exportado em $outputFile', style: const TextStyle(color: Colors.white)), backgroundColor: Colors.green),

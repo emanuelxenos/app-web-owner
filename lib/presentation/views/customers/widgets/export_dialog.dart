@@ -1,5 +1,9 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:unifytechxenoswebowner/services/file_export_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:unifytechxenoswebowner/core/theme/app_theme.dart';
@@ -138,23 +142,6 @@ class _ExportDialogState extends ConsumerState<ExportDialog> {
   Future<void> _export() async {
     setState(() => _exporting = true);
     try {
-      String fileName = 'clientes_${DateTime.now().millisecondsSinceEpoch}.$_format';
-      String? outputFile = await FilePicker.saveFile(
-        dialogTitle: 'Exportar Clientes',
-        fileName: fileName,
-        type: FileType.custom,
-        allowedExtensions: [_format],
-      );
-
-      if (outputFile == null) {
-        setState(() => _exporting = false);
-        return;
-      }
-
-      if (!outputFile.endsWith('.$_format')) {
-        outputFile += '.$_format';
-      }
-
       final repo = ref.read(customerRepositoryProvider);
       final bytes = await repo.exportarClientes(
         format: _format,
@@ -169,8 +156,18 @@ class _ExportDialogState extends ConsumerState<ExportDialog> {
         throw Exception('Nenhum dado retornado para exportação.');
       }
 
-      final file = File(outputFile);
-      await file.writeAsBytes(bytes);
+      String fileName = 'clientes_${DateTime.now().millisecondsSinceEpoch}.$_format';
+      String? outputFile = await FileExportService.exportAndSave(
+        bytes: Uint8List.fromList(bytes),
+        dialogTitle: 'Exportar Clientes',
+        fileName: fileName,
+        extension: _format,
+      );
+
+      if (outputFile == null) {
+        setState(() => _exporting = false);
+        return;
+      }
 
       if (!mounted) return;
       Navigator.pop(context);
